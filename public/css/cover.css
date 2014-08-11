@@ -141,6 +141,12 @@ body {
 .mastfoot {
     color: #999; /* IE8 proofing */
     color: rgba(255, 255, 255, .5);
+    display: block;
+}
+
+.row{
+    /*display: block;*/
+    clear: both;
 }
 
 .masthead {
@@ -216,7 +222,6 @@ text mirroring
 }
 
 .tweet {
-    /*white-space: pre;*/
     min-width: 100px;
     display: block;
     clear: both;
@@ -236,7 +241,6 @@ text mirroring
 .profile {
     width: 100%;
     display: block;
-    height: 150px;
     clear: both;
 }
 
