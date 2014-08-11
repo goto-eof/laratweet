@@ -1,4 +1,4 @@
 laratweet
 =========
 
-web application written using in Laravel
+web application written using Laravel
