@@ -18,7 +18,7 @@ class TweetController extends \BaseController
         if (!$tweet->save())
             return Redirect::to('user/profile/' . Auth::user()->username)->withInput()->with('errorMessage', 'Internal error.');
 
-        return Redirect::to('user/profile/' . Auth::user()->username)->with('errorMessage', 'done!');
+        return Redirect::to('user/profile/' . Auth::user()->username);
     }
 
 
