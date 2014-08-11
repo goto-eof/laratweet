@@ -3,11 +3,7 @@
 
 @section('body')
 <div>
-    @if(Auth::check())
-    <!--
-    <div class="container-fluid">
-        <div class="cover-container">
-            -->
+    {{-- @if(Auth::check()) --}}
     <div class="iner cover">
 
         <div class="row profile">
@@ -17,8 +13,8 @@
                           src="{{ !empty($profile->img_uri) ? $profile->img_uri:asset('img/no_photo_128.png') }}">
                 </div>
 
-                <div class="username">{{ '@'.$profile->username }}</div>
-                <div>{{ $profile->email }}</div>
+                <div class="username">{{{ '@'.$profile->username }}}</div>
+                <div>{{{ $profile->email }}}</div>
                 <div>
                     @if( $profile->username!=Auth::user()->username)
                         @if(!$youAreFollowing)
@@ -35,7 +31,7 @@
             </div>
             <div class="col-xs-12 col-md-8">
                 <div>
-                    {{ !empty($profile->bio) ? $profile->bio:'90% of your problems can be solved by marketing. Solving the other 10% just requires good procrastination skills.' }}
+                    {{{ !empty($profile->bio) ? $profile->bio : '90% of your problems can be solved by marketing. Solving the other 10% just requires good procrastination skills.' }}}
                 </div>
                 @if($profile->username===Auth::user()->username)
                 <hr>
@@ -45,9 +41,8 @@
 
                     <p>
                         @if(Session::has('errorMessage'))
-                        {{ Session::get('errorMessage') }}
+                           {{ Session::get('errorMessage') }}
                         @endif
-
                     </p>
                     {{ Form::textarea('tweet',null, array('class'=>'form-control', 'id'=>'tweet-input',
                     'maxlength'=>'140'))}}
@@ -60,52 +55,28 @@
         <!-- fine row -->
 
 
-        <div class="row" style="display: block; clear: both">
+        <div class="row" style="clear: both">
             <hr>
+            {{-- don't try this at home --}}
+            @if (Session::has('tweets') ? $tweets = Session::get('tweets') : $tweets)
+            @endif
 
-            @if(Session::has('tweets'))
-            <div class="bs-callout bs-callout-danger">
-                @foreach(Session::get('tweets') as $tweet)
-                <div style="min-height: 100px;">
-                    <div class="col-xs-6 col-md-4">
-                        <div><img class="img-circle" src="{{ asset('img/no_photo_128.png') }}"
-                                  style="width: 48px;height:48px;"></div>
-                        <div><strong>{{ '@'.$tweet->username }}</strong></div>
-                    </div>
-                    <div class="col-xs-12 col-md-8" style="text-align: left;">
-                        {{ $tweet->text }}
-                        <div>{{ $tweet->created_at }}</div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-
-            @else
             @foreach($tweets as $tweet)
-            <div style="min-height: 100px;" class="tweet">
+            <div class="tweet">
                 <div class="col-xs-6 col-md-4">
-                    <div><img class="img-circle" src="{{ asset('img/no_photo_128.png') }}"
-                              style="width: 48px;height:48px;">
-                    </div>
-                    <div><strong>{{ '@'.$tweet->username }}</strong></div>
+                    <div><img class="img-circle" src="{{ asset('img/no_photo_128.png') }}"></div>
+                    <div><strong>{{{ '@'.$tweet->username }}}</strong></div>
                 </div>
                 <div class="col-xs-12 col-md-8" style="text-align: left;">
-                    {{ $tweet->text }}
-                    <div class="text-align-right">{{
-                        \Carbon\Carbon::createFromTimeStamp(strtotime($tweet->created_at))->diffForHumans() }}
-                    </div>
+                    {{{ $tweet->text }}}
+                    <div class="text-align-right">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($tweet->created_at))->diffForHumans() }}</div>
                 </div>
             </div>
             @endforeach
-            @endif
         </div>
 
     </div>
 </div>
+{{-- @endif --}}
 
-@endif
-<!--
-</div>
-</div>
--->
 @stop
