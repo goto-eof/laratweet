@@ -81,10 +81,10 @@ class UserController extends \BaseController
 
         $validator = Validator::make(Input::all(), $rules);
         // list of the fields that have to be blank if an exception is encountered
+        $exceptArr = array('password');
 
         if ($validator->fails()) {
             // check in which field we have errors and add their name to the blank fields array
-            $exceptArr = array('password');
             if ($validator->messages()->has('email'))
                 $exceptArr[] = 'email';
             ($validator->messages()->has('username')) ? $exceptArr[] = 'username' : null;
