@@ -221,6 +221,12 @@ text mirroring
     display: block;
     clear: both;
     padding-top: 10px;
+    min-height: 100px;
+}
+
+.tweet img {
+    width: 64px;
+    height: 64px;
 }
 
 .text-align-right {
