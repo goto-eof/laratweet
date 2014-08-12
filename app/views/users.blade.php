@@ -9,7 +9,7 @@
             <div class="username"><a href="{{ url('user/profile/'.$user->username) }}">{{{ '@'.$user->username }}}</a></div>
         </div>
         <div class="col-xs-12 col-md-8">
-            {{{ empty($user->bio) ? '90% of your problems can be solved by marketing. Solving the other 10% just requires good procrastination skills.' : $user->bio }}}
+            {{{ empty($user->bio) ? 'Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' : $user->bio }}}
         </div>
     </div>
     @endforeach
