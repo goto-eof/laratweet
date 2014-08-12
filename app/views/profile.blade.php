@@ -29,7 +29,7 @@
         </div>
         <div class="col-xs-12 col-md-8">
             <div>
-                {{{ !empty($profile->bio) ? $profile->bio : '90% of your problems can be solved by marketing. Solving the other 10% just requires good procrastination skills.' }}}
+                {{{ !empty($profile->bio) ? $profile->bio : 'Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' }}}
             </div>
             @if ($profile->username===Auth::user()->username)
             <hr>
