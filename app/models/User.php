@@ -109,4 +109,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
                                 ', array($myUsername));
     }
+
+
+    public static function getFollowers($username){
+        return DB::select('SELECT u.id, u.username, u.email, u.bio, u.image_uri, u.created_at
+                           FROM Users AS u
+                           WHERE u.id in (
+                                            SELECT f.user_id
+                                            FROM Followings AS f
+                                            WHERE f.follows_user_id = (
+                                                                        SELECT id
+                                                                        FROM Users
+                                                                        WHERE lower(username)
+                                                                        LIKE lower(?)
+                                                                      )
+                                          )'
+                            , array($username));
+    }
 }
