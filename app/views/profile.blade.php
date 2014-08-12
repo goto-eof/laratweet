@@ -29,13 +29,13 @@
         </div>
         <div class="col-xs-12 col-md-8">
             <div>
-                {{{ !empty($profile->bio) ? $profile->bio : 'Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' }}}
+                {{{ !empty($profile->bio) ? $profile->bio : 'Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim.' }}}
             </div>
             @if ($profile->username===Auth::user()->username)
             <hr>
             <div>
                 {{ Form::open(array('url'=>url('tweet/post'), 'method' => 'POST', 'class' => 'form-signin')) }}
-                <h3>What are you doing?</h3>
+                <h3>What are you thinking?</h3>
 
                 <p>
                     @if (Session::has('errorMessage'))
